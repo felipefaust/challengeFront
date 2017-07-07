@@ -5,42 +5,38 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <title>Alurapic</title>
-
-
-
         <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap-theme.css">
     </head>
     <body >
-        <div class="container">
+        <div class="container" ng-controller="mainController">
             <div class="jumbotron">
                 <h1 class="text-center">Desafio Front</h1>
             </div>
-            <div class="row">
 
-            </div><!-- fim row -->
-            <div class="row" ng-controller="goController">
-            <div class="col-lg-6">
-              <div class="input-group">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" ng-click="go(testebotao)" type="button">Go!</button>
-                </span>
-                <input type="text" ng-model="testebotao" class="form-control" placeholder="Search for...">
-              </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
-            <div class="col-lg-6">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for...">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">Go!</button>
-                </span>
-              </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
-          </div><!-- /.row -->
+          <div class="jumbotron">
+              <div class="row">
+                <div class="form-group col-lg-5">
+                  <label for="sel1">Estado</label>
+                  <select class="form-control" ng-model="state" ng-options="st as st.nome for st in states">
+                  </select>
+                </div>
+                <div class="form-group col-lg-5">
+                  <label for="sel1">Cidades</label>
+                  <select class="form-control" ng-model="cityName" ng-options="ct as ct for ct in state.cidades">
+                  </select>
+                </div>
+                  <div class="col-md-1 col-sm-2 col-xs-6">
+                <button style="margin-top: 1.8em;" type="button" name="button" class="btn btn-primary" ng-click="showWeather()">Buscar</button>
+              </div>
+              </div>
+          </div>
         </div><!-- fim container -->
 
         <script src="libs/angular/angular.min.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/controllers/go-controller.js"></script>
+        <script>var app = angular.module("desafiofront", []); /* Create the angular application */</script>
+        <script src="js/controllers/main-controller.js"></script>
+        <script src="js/services/cities.js"></script>
+
     </body>
 </html>
