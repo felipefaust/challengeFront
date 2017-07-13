@@ -7,6 +7,8 @@
         <title>Alurapic</title>
         <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="css/efeitos.css">
+
     </head>
     <body >
         <div class="container" ng-controller="mainController">
@@ -31,8 +33,18 @@
               </div>
               </div>
           </div>
+             <div class="own-row" ng-repeat="previsao in weatherInfo.previsoes">
+               <div class="col-sm-2">
+                <div class="card">
+                    <img ng-src="http://openweathermap.org/img/w/{{previsao.imagem}}.png" alt="Icon" />
+                    <h4 class="card-title">{{previsao.data | date: 'EEEE d MMM'}}</h4>
+                    <p class="card-text">{{previsao.descricao}}</p>
+                    <span class="info-box-text">Min.: {{previsao.temperatura_min}}</span>
+                    <span>Máx.: {{previsao.temperatura_max}}</span>
+                </div>
+              </div>
+             </div>
         </div><!-- fim container -->
-
         <script src="libs/angular/angular.min.js"></script>
         <script>var app = angular.module("desafiofront", []); /* Create the angular application */</script>
         <script src="js/controllers/main-controller.js"></script>

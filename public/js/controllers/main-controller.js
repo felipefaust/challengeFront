@@ -2,6 +2,7 @@ angular.module('desafiofront').controller('mainController',['$scope','cities', '
   $scope.states = cities.estados;
 
   $scope.showWeather = function(){
+      $scope.weatherInfo = false;
 
      if(!$scope.state || !$scope.cityName) {
              $scope.messageErr = 'missingState';
