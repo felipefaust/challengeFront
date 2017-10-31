@@ -7,16 +7,13 @@
         <title>Alurapic</title>
         <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="libs/admin-lte/dist/css/AdminLTE.css">
         <link rel="stylesheet" href="css/efeitos.css">
-
+        
     </head>
     <body >
         <div class="container" ng-controller="mainController">
-            <div class="jumbotron">
-                <h1 class="text-center">Desafio Front</h1>
-            </div>
-
-          <div class="jumbotron">
+           <div class="jumbotron">
               <div class="row">
                 <div class="form-group col-lg-5" >
                   <label for="sel1">Estado</label>
@@ -33,19 +30,48 @@
               </div>
               </div>
           </div>
-             <div class="own-row" ng-repeat="previsao in weatherInfo.previsoes">
-               <div class="col-sm-2">
-                <div class="card">
-                    <img ng-src="http://openweathermap.org/img/w/{{previsao.imagem}}.png" alt="Icon" />
-                    <h4 class="card-title">{{previsao.data | date: 'EEEE d MMM'}}</h4>
-                    <p class="card-text">{{previsao.descricao}}</p>
-                    <span class="info-box-text">Min.: {{previsao.temperatura_min}}</span>
-                    <span>Máx.: {{previsao.temperatura_max}}</span>
+
+         
+
+            
+          <div class="row">
+              <div ng-repeat="previsao in weatherInfo.previsoes">
+                 <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="info-box">
+                    <!-- Apply any bg-* class to to the icon to color it -->
+                    <span class="info-box-icon bg-red"><i class="fa fa-star-o">
+                      <img ng-src="http://openweathermap.org/img/w/{{previsao.imagem}}.png" alt="Icon" />
+                      </i></span>
+                    <div class="info-box-content">
+                      <span class="info-box-text">{{previsao.data | date: 'EEEE d MMM'}}</span>
+                      <span class="info-box-text">{{previsao.descricao}}</span>
+                      <span class="info-box-text">Min.: {{previsao.temperatura_min}}</span>
+                      <span class="info-box-text">Máx.: {{previsao.temperatura_max}}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-             </div>
-        </div><!-- fim container -->
+            </div>     
+
+
+            <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>150</h3>
+
+              <p>New Orders</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"> <img ng-src="http://openweathermap.org/img/w/{{previsao.imagem}}.png" alt="Icon" /></i>
+            </div>
+            <span class="small-box-footer">max: 22 min: 22<i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>         
+         
         <script src="libs/angular/angular.min.js"></script>
+        <script src="libs/jquery/dist/jquery.min.js"></script>
+        <script src="libs/admin-lte/dist/js/adminlte.min.js"></script>
         <script>var app = angular.module("desafiofront", []); /* Create the angular application */</script>
         <script src="js/controllers/main-controller.js"></script>
         <script src="js/services/cities.js"></script>
