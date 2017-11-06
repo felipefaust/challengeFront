@@ -11,7 +11,8 @@
         <link rel="stylesheet" href="css/efeitos.css">
         
     </head>
-    <body >
+    <body class="bg-gray">
+       <section class = "content"> 
         <div class="container" ng-controller="mainController">
            <div class="jumbotron">
               <div class="row">
@@ -36,10 +37,82 @@
             
           <div class="row">
               <div ng-repeat="previsao in weatherInfo.previsoes">
-                 <div class="col-md-3 col-sm-6 col-xs-12">
+                
+                <div class="col-md-3">
+                  <!-- Widget: user widget style 1 -->
+                  <div class="box box-widget widget-user">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-aqua-active">
+                      <h3 class="widget-user-username">{{previsao.data | date: 'EEEE d MMM'}}</h3>
+                      <h4 class="widget-user-desc"></h4>
+                    </div>
+                    <div class="widget-user-image bg-white">
+                      <img class="img-circle" src="http://openweathermap.org/img/w/{{previsao.imagem}}.png">
+                    </div>
+                    <div class="box-footer">
+                      <div class="row">
+                      <!-- /.col -->
+                        <div class="col-sm-6 border-right">
+                          <div class="description-block">
+                            <h5 class="description-header">Mínima:</h5>
+                            <span class="description-text">{{previsao.temperatura_min}}º</span>
+                          </div>
+                          <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-sm-6">
+                          <div class="description-block">
+                            <h5 class="description-header">Máxima:</h5>
+                            <span class="description-text"> {{previsao.temperatura_max}}º</span>
+                          </div>
+                          <!-- /.description-block -->
+                        </div>
+                        <!-- /.col -->
+                      </div>
+                      <!-- /.row -->
+                        <div class="description-block">
+                          <strong>Condição:</strong> <span class="description-text">{{previsao.descricao}}</span>        
+                        </div>
+                          <!-- /.description-block -->
+                      </div>
+
+                    </div>
+                  </div>
+                  <!-- /.widget-user -->
+                </div>
+
+                
+
+                <!--<div class="col-lg-2 col-xs-4 no-border" >
+                          <div class="box" style="border-right: 1px solid #f4f4f4">
+                            <div class="box-header">
+                               <span class="info-box-text">{{previsao.data | date: 'EEEE d MMM'}}</span>
+                                <img ng-src="http://openweathermap.org/img/w/{{previsao.imagem}}.png" alt="Icon" />
+                                
+                            </div>
+                            <div class="inner">
+                             
+                              <span class="info-box-text">{{previsao.descricao}}</span>
+                            </div>
+                            
+                            
+                                <span class="info-box-text">Min.: {{previsao.temperatura_min}}</span>
+                                <span class="info-box-text">Máx.: {{previsao.temperatura_max}}</span>
+                          
+                          </div>
+                        </div>   -->
+
+
+
+              </div>
+            </div>     
+
+
+                 
+         
+          <!--<div class="col-md-3 col-sm-6 col-xs-12">
                   <div class="info-box">
-                    <!-- Apply any bg-* class to to the icon to color it -->
-                    <span class="info-box-icon bg-red"><i class="fa fa-star-o">
+                    <span class="info-box-icon bg-white"><i class="fa fa-star-o">
                       <img ng-src="http://openweathermap.org/img/w/{{previsao.imagem}}.png" alt="Icon" />
                       </i></span>
                     <div class="info-box-content">
@@ -49,26 +122,8 @@
                       <span class="info-box-text">Máx.: {{previsao.temperatura_max}}</span>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>     
-
-
-            <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>150</h3>
-
-              <p>New Orders</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"> <img ng-src="http://openweathermap.org/img/w/{{previsao.imagem}}.png" alt="Icon" /></i>
-            </div>
-            <span class="small-box-footer">max: 22 min: 22<i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>         
-         
+                </div> -->
+           </section> 
         <script src="libs/angular/angular.min.js"></script>
         <script src="libs/jquery/dist/jquery.min.js"></script>
         <script src="libs/admin-lte/dist/js/adminlte.min.js"></script>
