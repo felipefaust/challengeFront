@@ -1,5 +1,12 @@
 angular.module('desafiofront').controller('mainController',['$scope','cities', 'weatherApi',function($scope, cities, weatherApi){
   $scope.states = cities.estados;
+  const vm = $scope;
+  vm.showFirstWeather = showFirstWeather;
+   
+  function onInit(){
+     vm.showFirstWeather();
+   }
+   onInit();
 
   $scope.showWeather = function(){
       $scope.weatherInfo = false;
@@ -8,7 +15,7 @@ angular.module('desafiofront').controller('mainController',['$scope','cities', '
              $scope.messageErr = 'missingState';
              return;
       }
-
+      
     weatherApi.consult($scope.cityName, $scope.state.sigla)
     .then(function(result) {
       var arr = [];
@@ -29,8 +36,12 @@ angular.module('desafiofront').controller('mainController',['$scope','cities', '
     function(err) {
         $scope.messageErr = "Não foi possível obter as informações de tempo para a cidade desejada."
     });
-
-
-
    }
+   
+   function showFirstWeather() {
+    $scope.state = $scope.states[23];
+    $scope.cityName = "Blumenau";
+    showWeather();
+   }
+   
 }]);
