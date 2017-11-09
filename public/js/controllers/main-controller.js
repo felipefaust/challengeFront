@@ -2,13 +2,14 @@ angular.module('desafiofront').controller('mainController',['$scope','cities', '
   $scope.states = cities.estados;
   const vm = $scope;
   vm.showFirstWeather = showFirstWeather;
-   
+  vm.showWeather = showWeather;
   function onInit(){
      vm.showFirstWeather();
+     vm.showWeather();
    }
    onInit();
 
-  $scope.showWeather = function(){
+   function showWeather(){
       $scope.weatherInfo = false;
 
      if(!$scope.state || !$scope.cityName) {
@@ -41,7 +42,7 @@ angular.module('desafiofront').controller('mainController',['$scope','cities', '
    function showFirstWeather() {
     $scope.state = $scope.states[23];
     $scope.cityName = "Blumenau";
-    showWeather();
    }
+   
    
 }]);
