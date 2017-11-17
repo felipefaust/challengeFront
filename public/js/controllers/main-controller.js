@@ -1,13 +1,21 @@
-angular.module('desafiofront').controller('mainController',['$scope','cities', 'weatherApi',function($scope, cities, weatherApi){
+angular.module('desafiofront',['ngCookies']).controller('mainController',['$scope','cities', 'weatherApi','$cookie',
+function($scope, cities, weatherApi, $cookie){
+
   $scope.states = cities.estados;
   const vm = $scope;
   vm.showFirstWeather = showFirstWeather;
   vm.showWeather = showWeather;
+  vm.getFavorite = getFavorite;
+  vm.setFavorite = setFavorite;
   function onInit(){
      vm.showFirstWeather();
      vm.showWeather();
+     vm.setFavorite();
+     vm.getFavorite();
    }
    onInit();
+
+
 
    function showWeather(){
       $scope.weatherInfo = false;
@@ -39,6 +47,17 @@ angular.module('desafiofront').controller('mainController',['$scope','cities', '
     });
    }
    
+   function setFavorite(){
+    $cookie.put("state",$scope.state);
+    $cookie.put("cityname", $scope.cityName);
+   }
+
+   function getFavorite(){
+    $scope.state =$cookieStore.get("state");
+    $scope.cityName =$cookie.get("cityname"); 
+    $window.alert($cookie.get("state"));
+   }
+
    function showFirstWeather() {
     $scope.state = $scope.states[23];
     $scope.cityName = "Blumenau";
