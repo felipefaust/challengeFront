@@ -4,14 +4,15 @@ function($scope, $cookies, $filter, cities, weatherApi){
 
   $scope.states = cities.estados;
   const vm = $scope;
-  vm.showFirstWeather = showFirstWeather;
+  var stateDefault = $scope.states[23];
+  var cityDefault = "Blumenau";
   vm.showWeather = showWeather;
   vm.getFavorite = getFavorite;
   vm.setFavorite = setFavorite;
   
 
   function onInit(){
-     vm.showFirstWeather();
+     vm.getFavorite();
      vm.showWeather();
     }
 
@@ -48,23 +49,14 @@ function($scope, $cookies, $filter, cities, weatherApi){
    }
    
    function setFavorite(){
-    $cookies.put("state",$scope.state);
+    $cookies.put("state",$scope.state.sigla);
     $cookies.put("cityname", $scope.cityName);
    }
 
    function getFavorite(){
-    $scope.state =$cookies.get("state");
-    $scope.cityName =$cookies.get("cityname"); 
-    //console.log($cookies.get("state"));
+    var state =  $filter('filter')($scope.states, {'sigla':$cookies.get("state")})[0];
+    $scope.state = state || stateDefault;
+    $scope.cityName = $cookies.get("cityname") || cityDefault;
    }
 
-   function showFirstWeather() {
-    $cookies.put("state", "SC" );
-    $cookies.put("cityname", "Blumenau");
-    $scope.state = $filter('filter')($scope.states, {'sigla':$cookies.get("state")})[0];
-    $scope.cityName = $cookies.get("cityname"); 
-    vm.showWeather();
-   }
-   
-   
 }]);
