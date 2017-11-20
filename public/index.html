@@ -79,17 +79,18 @@
       </div>
     </div>
   </div>
-  <script src="libs/angular/angular.min.js"></script>
+  <script src="libs/angular/angular.js"></script>
+  <script src="libs/angular-cookies/angular-cookies.min.js"></script>
   <script src="libs/jquery/dist/jquery.min.js"></script>
   <script src="libs/admin-lte/dist/js/adminlte.min.js"></script>
   <script>
-    var app = angular.module("desafiofront", []); /* Create the angular application */
+    var app = angular.module("desafiofront", ['ngCookies']); /* Create the angular application */
   </script>
   <script src="js/controllers/main-controller.js"></script>
   <script src="js/services/cities.js"></script>
   <script src="js/services/weatherApi.js"></script>
   <script src="js/services/blMocks.js"> </script>
-  <script src="https://code.angularjs.org/1.5.5/angular-cookies.min.js"></script>
+ 
 </body>
 
 </html>

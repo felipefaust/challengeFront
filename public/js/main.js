@@ -1,1 +1,1 @@
-angular.module('desafiofront',[]);
+angular.module('desafiofront',['ngCookies']);

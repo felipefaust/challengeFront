@@ -12,7 +12,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "^1.6.4",
+    "angular": "^1.6.6",
+    "angular-cookies" : "^1.6.6",
     "bootstrap": "^3.3.7",
     "admin-lte": "^2.4.2",
     "jquery": "^3.2.1"

@@ -1,5 +1,6 @@
-angular.module('desafiofront',['ngCookies']).controller('mainController',['$scope','cities', 'weatherApi','$cookie',
-function($scope, cities, weatherApi, $cookie){
+'use strict'
+app.controller('mainController', [ '$scope', '$cookies', '$filter', 'cities', 'weatherApi',
+function($scope, $cookies, $filter, cities, weatherApi){
 
   $scope.states = cities.estados;
   const vm = $scope;
@@ -7,15 +8,14 @@ function($scope, cities, weatherApi, $cookie){
   vm.showWeather = showWeather;
   vm.getFavorite = getFavorite;
   vm.setFavorite = setFavorite;
+  
+
   function onInit(){
      vm.showFirstWeather();
      vm.showWeather();
-     vm.setFavorite();
-     vm.getFavorite();
-   }
+    }
+
    onInit();
-
-
 
    function showWeather(){
       $scope.weatherInfo = false;
@@ -40,7 +40,7 @@ function($scope, cities, weatherApi, $cookie){
       });
       result.data.previsoes = arr;
       $scope.weatherInfo = result.data;
-      console.log($scope.weatherInfo.previsoes);
+      //console.log($scope.weatherInfo.previsoes);
     },
     function(err) {
         $scope.messageErr = "Não foi possível obter as informações de tempo para a cidade desejada."
@@ -48,19 +48,22 @@ function($scope, cities, weatherApi, $cookie){
    }
    
    function setFavorite(){
-    $cookie.put("state",$scope.state);
-    $cookie.put("cityname", $scope.cityName);
+    $cookies.put("state",$scope.state);
+    $cookies.put("cityname", $scope.cityName);
    }
 
    function getFavorite(){
-    $scope.state =$cookieStore.get("state");
-    $scope.cityName =$cookie.get("cityname"); 
-    $window.alert($cookie.get("state"));
+    $scope.state =$cookies.get("state");
+    $scope.cityName =$cookies.get("cityname"); 
+    //console.log($cookies.get("state"));
    }
 
    function showFirstWeather() {
-    $scope.state = $scope.states[23];
-    $scope.cityName = "Blumenau";
+    $cookies.put("state", "SC" );
+    $cookies.put("cityname", "Blumenau");
+    $scope.state = $filter('filter')($scope.states, {'sigla':$cookies.get("state")})[0];
+    $scope.cityName = $cookies.get("cityname"); 
+    vm.showWeather();
    }
    
    
